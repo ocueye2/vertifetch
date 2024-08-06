@@ -1,10 +1,6 @@
-import platform
-import psutil
-import subprocess
-import os
-import socket
 
-img = "/home/ocueye/Documents/code/python/pyfetch/art.txt"
+img = ""
+#replace with image
 
 # ANSI escape codes
 RED = "\033[31m"
@@ -12,6 +8,44 @@ GREEN = "\033[32m"
 YELLOW = "\033[33m"
 BLUE = "\033[34m"
 RESET = "\033[0m"
+
+
+if img == "":
+    print(f"{RED}please fill in asci img location{RESET}")
+    exit()
+
+
+try:
+    import platform
+    import psutil
+    import subprocess
+    import os
+    import socket
+except:
+    import os
+    print(f"{YELLOW}it seems psutil is not installed, \n install with pip?{RESET}")
+    out = input()
+    if out == "yes" or out == "y" or out == "":
+        print(f"{YELLOW}what is the pip ve path (leave blank to just use pip){RESET}")
+        out = input()
+        if out == "":
+            ve = "pip"
+        else:
+            ve = out
+
+        os.system(f"{ve} install psutil{RESET}")
+        try:
+            import platform
+            import psutil
+            import subprocess
+            import socket
+        except:
+            print()
+            print(f"{RED}uh oh, seems it didnt install properly, try with a virtual enviroment (ve){RESET}")
+            exit()
+
+
+
 
 
 
